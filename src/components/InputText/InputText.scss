@@ -1,0 +1,22 @@
+.input-container {
+  width: 100%;
+  .input-text {
+    width: 100%;
+  }
+  .error {
+    height: 1.5rem;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    span {
+      position: absolute;
+      bottom: 1.5rem;
+      opacity: 0;
+      transition: all 0.2s;
+    }
+    &.active span {
+      opacity: 1;
+      bottom: 0.1rem;
+    }
+  }
+}
