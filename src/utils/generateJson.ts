@@ -5,8 +5,6 @@ const generateJson = () => {
   if (!data) return
   const text = JSON.stringify(data)
 
-  console.log(data, text)
-
   // Create a tag for download
   const downloadLink = document.createElement('a')
   downloadLink.target = '_blank'
