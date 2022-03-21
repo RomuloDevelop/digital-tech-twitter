@@ -1,18 +1,23 @@
 import { UserIcon } from '@heroicons/react/solid'
-import ImagePicker from '../ImagePicker'
+import { useCallback, useState } from 'react'
+import useFirstRender from '../../hooks/useFirstRender'
+import ImagePicker, { HandleImage } from '../ImagePicker'
 import './AvatarSelector.scss'
 
 const AvatarSelector = ({value, onChange}: {value: string | null | undefined, onChange: (image: string) => void}) => {
-  const pickerChange = (newValue: string) => {
-    if (!value) onChange(newValue)
-  }
-
-  const updateStateAndHandle = (event: any, cb: (event: any) => void) => {
-    if (value) {
-      onChange('')
-    } else {
-      cb(event)
+  const firstRender = useFirstRender()
+  const [pickerValue, setPickerValue] = useState('')
+  const pickerChange = useCallback((newValue: string) => {
+    setPickerValue(newValue)
+    if (!firstRender) {
+      onChange(newValue)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onChange])
+
+  const updateStateAndHandle = (event: any, cb: HandleImage) => {
+    if (value && !pickerValue) onChange('') 
+    else cb(event)
   }
   return (
     <ImagePicker onChange={pickerChange}>

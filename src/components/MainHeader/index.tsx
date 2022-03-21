@@ -1,4 +1,4 @@
-import { useState, useEffect, FormEvent, Fragment } from "react"
+import { useState, FormEvent, Fragment } from "react"
 import { UserCircleIcon, PencilIcon, SearchIcon, DatabaseIcon, LogoutIcon } from '@heroicons/react/solid'
 import { Menu, Dialog, Transition } from '@headlessui/react'
 import './MainHeader.scss'

@@ -11,7 +11,7 @@ const AuthGuard = ({ children }: {children: ReactElement}) => {
       if (location.pathname !== '/login' && location.pathname !== '/register' && !actualUser) {
         navigate("/login")
       }
-  }, [location.pathname, actualUser])
+  }, [location.pathname, navigate, actualUser])
   return children
 }
 

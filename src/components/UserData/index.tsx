@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import { FormikHelpers, useFormik } from 'formik';
 import Card from "../../components/Card";
 import { User } from "../../store/user";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Input from "../../components/InputText";
 import FormButton from "../../components/Button";
 import './UserData.scss';

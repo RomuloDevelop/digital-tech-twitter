@@ -1,4 +1,4 @@
-import { FormEvent, useMemo, useState } from 'react'
+import { FormEvent, useCallback, useMemo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { store } from '../../store'
 import { add, Post } from '../../store/post'
@@ -42,17 +42,15 @@ const PostForm = () =>  {
       store.dispatch(add(post))
     })
   }
+console.log(image)
 
-  const pickerChange = (newValue: string, name?: string) => {
+  const pickerChange = useCallback((newValue: string, name?: string) => {
     if (!image.blob) setImage({blob: newValue, name})
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const updateStateAndHandle = (event: any, cb: (event: any) => void) => {
-    if (image.blob) {
-      setImage({blob: '', name: ''})
-    } else {
       cb(event)
-    }
   }
 
   return (
