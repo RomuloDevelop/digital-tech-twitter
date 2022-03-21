@@ -1,11 +1,13 @@
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
-import { selectUser } from '../../store/user/selects'
+import { selectPostsCount, selectUser } from '../../store/user/selects'
 import Avatar from '../Avatar'
 import './UserTag.scss'
 
 const UserTag = () => {
   const actualUser = useSelector(selectUser)
+  const postsCount = useSelector(selectPostsCount)
+
   const fullName = useMemo(() => {
     if (actualUser) {
       if (actualUser.name.length + actualUser.username.length > 30) {
@@ -28,7 +30,7 @@ const UserTag = () => {
       </div>
       <div className='tag-info text-slate-600'>
         <span>{actualUser?.username}</span>
-        <span>200 publicaciones</span>
+        <span>{postsCount} publicaciones</span>
       </div>
     </div>
   )
