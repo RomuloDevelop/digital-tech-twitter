@@ -8,6 +8,7 @@ import { update } from "../../store/search"
 import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { selectUser } from "../../store/user/selects"
+import generateJson from "../../utils/generateJson"
 
 type SearchEvent = FormEvent<HTMLInputElement>
 
@@ -41,6 +42,10 @@ const Header = () => {
   const updateSearchAndDispatch = (event: FormEvent<HTMLInputElement>) => {
     updateSearch(event)
     store.dispatch(update(event.currentTarget.value))
+  }
+
+  const generateBatch = () => {
+    generateJson()
   }
  
   return (
@@ -83,7 +88,7 @@ const Header = () => {
                 <CustomMenuItem onClick={profile}>
                   {(active: boolean) => (<><PencilIcon className={`${active? 'text-white': 'text-purple-700'} w-5 h-5 mr-2`}/> Editar</>)}
                 </CustomMenuItem>
-                <CustomMenuItem>
+                <CustomMenuItem onClick={generateBatch}>
                   {(active: boolean) => (<><DatabaseIcon className={`${active? 'text-white': 'text-purple-700'} w-5 h-5 mr-2`}/> Agregar Batch</>)}
                 </CustomMenuItem>
                 <CustomMenuItem onClick={logout}>
