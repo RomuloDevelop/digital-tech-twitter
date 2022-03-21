@@ -1,6 +1,9 @@
 .home {
   display: flex;
   flex-direction: column;
+  & > div:nth-child(2) {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {
@@ -11,6 +14,7 @@
       grid-column: 1/4
     }
     &> div:nth-child(2) {
+      display: flex;
       grid-column: 4/6
     }
   }

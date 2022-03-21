@@ -77,7 +77,7 @@ const UserData = ({onSubmit}: {onSubmit: Function}) => {
                 value={formik.values.name}
                 name="name"
                 error={nameError}
-                errorMessage={formik.errors.username}
+                errorMessage={formik.errors.name}
               ></Input>
               <Input
                 placeholder="Apellido"

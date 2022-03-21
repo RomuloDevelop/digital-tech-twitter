@@ -6,6 +6,7 @@ import { PostUser, selectPosts } from '../../store/post/selects';
 import { RootState } from '../../store';
 import { selectSearch } from '../../store/search/selects';
 import './Home.scss'
+import UserTag from '../../components/UserTag';
 
 const Home = ({posts}: {posts: PostUser[]}) => {
   let search = useSelector(selectSearch)
@@ -32,7 +33,8 @@ const Home = ({posts}: {posts: PostUser[]}) => {
               </div>
           }
         </div>
-        <div>
+        <div className='justify-center'>
+          <UserTag />
         </div>
       </div>
     </>
