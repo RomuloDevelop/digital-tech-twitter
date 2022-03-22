@@ -1,8 +1,6 @@
-import { useState } from "react";
 import {
   Routes,
-  Route,
-  useLocation,
+  Route
 } from "react-router-dom";
 import TransitionGroup from "./components/TransitionGroup";
 import AuthGuard from "./guards/AuthGuard";
