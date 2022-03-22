@@ -12,11 +12,12 @@ import { selectUser } from "../../store/user/selects";
 import { ChevronLeftIcon } from "@heroicons/react/solid";
 import AvatarSelector from "../AvatarSelector";
 
+type UserDataProps = {onSubmit: Function}
 type Fields = Omit<User, 'id'>
 
 const requiredMessage = (name: string) => `${name} es requerido`
 
-const UserData = ({onSubmit}: {onSubmit: Function}) => {
+const UserData = (props: UserDataProps) => {
   const navigate = useNavigate()
   const actualUser = useSelector(selectUser) as User
   const [avatar, setAvatar] = useState(actualUser.avatar)
@@ -29,7 +30,7 @@ const UserData = ({onSubmit}: {onSubmit: Function}) => {
     onSubmit: (values: Fields, { setSubmitting }: FormikHelpers<Fields>) => {
       setTimeout(() => {
         setSubmitting(false);
-        onSubmit({...values, avatar, id: actualUser.id})
+        props.onSubmit({...values, avatar, id: actualUser.id})
       }, 1500)
     },
     validationSchema: Yup.object({

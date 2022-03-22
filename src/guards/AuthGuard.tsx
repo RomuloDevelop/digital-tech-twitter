@@ -3,16 +3,18 @@ import { useSelector } from "react-redux"
 import { useLocation, useNavigate } from "react-router-dom"
 import { selectUser } from "../store/user/selects"
 
-const AuthGuard = ({ children }: {children: ReactElement}) => {
+type GuardProps = {children: ReactElement}
+
+const AuthGuard = (props: GuardProps) => {
   const actualUser = useSelector(selectUser) 
   const navigate = useNavigate()
   const location = useLocation()
   useEffect(() => {
-      if (location.pathname !== '/login' && location.pathname !== '/register' && !actualUser) {
+      if (!location.pathname.includes('/login') && !location.pathname.includes('/register') && !actualUser) {
         navigate("/login")
       }
   }, [location.pathname, navigate, actualUser])
-  return children
+  return props.children
 }
 
 export default AuthGuard

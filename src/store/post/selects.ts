@@ -25,7 +25,7 @@ export const selectPosts = createSelector(
         author: users.find((user) => user.id === post.author) as User
       }))
       .filter((post) => {
-        let regex = new RegExp(search.toLowerCase())
+        const regex = new RegExp(search.toLowerCase())
         return post.status === 'published' && (regex.test(post.message.toLowerCase()) || regex.test(post.author.username.toLowerCase()))
       })
       return result

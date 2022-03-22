@@ -1,7 +1,7 @@
 import { store } from "../store";
 
 const generateJson = () => {
-  let data = store.getState()
+  const data = store.getState()
   if (!data) return
   const text = JSON.stringify(data)
 

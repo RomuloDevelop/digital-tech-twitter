@@ -15,7 +15,7 @@ type RegisterFields = Omit<User, 'id'>
 const requiredMessage = (name: string) => `${name} es requerido`
 
 const Register = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       username: '',

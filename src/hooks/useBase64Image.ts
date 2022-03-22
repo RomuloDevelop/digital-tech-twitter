@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import toBase64 from '../utils/files'
 
 const useBase64Image = (file: File | null) => {
-  let [image, setImage] = useState('')
+  const [image, setImage] = useState('')
   useEffect(() => {
     if (file) {
      toBase64(file).then((result) => {

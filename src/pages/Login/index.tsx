@@ -18,10 +18,10 @@ import './Login.scss';
 interface LoginFields {username: string}
 
 const Login = () => {
-  let fileInput = useRef<HTMLInputElement | null>(null)
+  const fileInput = useRef<HTMLInputElement | null>(null)
   const users = useSelector(selectUsers);
-  let navigate = useNavigate();
-  let [noExist, setExistance] = useState(false);
+  const navigate = useNavigate();
+  const [noExist, setExistance] = useState(false);
 
   const formik = useFormik({
     initialValues: {

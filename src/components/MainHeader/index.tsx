@@ -118,7 +118,7 @@ const CustomMenuItem = (props: any) => (
 )
 
 const SearchModal = (props: {search: string, updateSearch: (value: SearchEvent) => void, isOpen: boolean, closeModal: () => void}) => {
-  let {search, updateSearch, isOpen, closeModal} = props
+  const {search, updateSearch, isOpen, closeModal} = props
 
   const closeModalAndDispatch = () => {
     closeModal()

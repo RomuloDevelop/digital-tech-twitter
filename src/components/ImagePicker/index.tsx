@@ -4,9 +4,9 @@ import useBase64Image from "../../hooks/useBase64Image"
 export type HandleImage = (event: any, action?: 'DELETE' | 'UPDATE') => void
 
 const ImagePicker = ({onChange, children}: {onChange: (image: string, name?: string) => void, children: (cb:(event: any) => void) => ReactElement}) => {
-  let fileInput = useRef<HTMLInputElement | null>(null)
-  let [file, setFile] = useState<File | null>(null)
-  let image = useBase64Image(file)
+  const fileInput = useRef<HTMLInputElement | null>(null)
+  const [file, setFile] = useState<File | null>(null)
+  const image = useBase64Image(file)
 
   useEffect(() => {
     onChange(image, file?.name)

@@ -30,7 +30,7 @@ const UserTag = () => {
       </div>
       <div className='tag-info text-slate-600'>
         <span>{actualUser?.username}</span>
-        <span>{postsCount} publicaciones</span>
+        <span>{postsCount} publicaciónes</span>
       </div>
     </div>
   )

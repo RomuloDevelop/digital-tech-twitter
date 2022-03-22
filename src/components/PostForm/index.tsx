@@ -12,12 +12,12 @@ import './PostForm.scss'
 
 
 const PostForm = () =>  {
-  let author = useSelector(selectUser) as User
-  let [loading, setLoading] = useState(false)
-  let [message, setMessage] = useState('')
-  let [touched, setTouched] = useState(false)
-  let [image, setImage] = useState<{blob: string, name?: string}>({blob: '', name: ''})
-  let messageError = useMemo(() => touched && (message.length < 10 || message.length > 500), [message, touched])
+  const author = useSelector(selectUser) as User
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState('')
+  const [touched, setTouched] = useState(false)
+  const [image, setImage] = useState<{blob: string, name?: string}>({blob: '', name: ''})
+  const messageError = useMemo(() => touched && (message.length < 10 || message.length > 500), [message, touched])
 
   const handleInput = (event: FormEvent<HTMLTextAreaElement>) => {
     setMessage(event.currentTarget.value)
@@ -42,7 +42,6 @@ const PostForm = () =>  {
       store.dispatch(add(post))
     })
   }
-console.log(image)
 
   const pickerChange = useCallback((newValue: string, name?: string) => {
     if (!image.blob) setImage({blob: newValue, name})

@@ -1,15 +1,15 @@
 import Header from '../../components/MainHeader'
 import PostItem from '../../components/PostItem'
 import PostForm from '../../components/PostForm';
-import { connect, useSelector } from 'react-redux';
-import { PostUser, selectPosts } from '../../store/post/selects';
-import { RootState } from '../../store';
+import { useSelector } from 'react-redux';
+import { selectPosts } from '../../store/post/selects';
 import { selectSearch } from '../../store/search/selects';
 import './Home.scss'
 import UserTag from '../../components/UserTag';
 
-const Home = ({posts}: {posts: PostUser[]}) => {
-  let search = useSelector(selectSearch)
+const Home = () => {
+  const posts = useSelector(selectPosts)
+  const search = useSelector(selectSearch)
 
   return (
     <>
@@ -41,9 +41,5 @@ const Home = ({posts}: {posts: PostUser[]}) => {
   )
 }
 
-const mapping = (state: RootState) => ({
-  posts: selectPosts(state),
-});
 
-
-export default connect(mapping)(Home);
+export default Home;

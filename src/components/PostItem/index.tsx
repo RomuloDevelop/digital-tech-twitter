@@ -11,7 +11,9 @@ import Avatar from '../Avatar'
 import Card from '../Card'
 import './PostItem.scss'
 
-const PostItem = ({...props}: PostUser) => {
+type DescriptionProps = {message: string}
+
+const PostItem = (props: PostUser) => {
   const actualUser = useSelector(selectUser) as User
   const time = moment(props.create_at).from(new Date())
   const hasLike = props.likes.some(user => user.id === actualUser?.id)
@@ -69,10 +71,10 @@ const PostItem = ({...props}: PostUser) => {
   )
 }
 
-const PostDescription = ({message}: {message: string}) => {
-  let messageBox = useRef<HTMLParagraphElement>(null)
-  let [seeMore, setSeeMore] = useState(false)
-  let [showBtn, setShowBtn] = useState(false)
+const PostDescription = (props: DescriptionProps) => {
+  const messageBox = useRef<HTMLParagraphElement>(null)
+  const [seeMore, setSeeMore] = useState(false)
+  const [showBtn, setShowBtn] = useState(false)
 
   useEffect(() => {
     handleShowBtn()
@@ -91,10 +93,11 @@ const PostDescription = ({message}: {message: string}) => {
       <div style={{maxHeight: seeMore? undefined: 150, overflow: 'hidden'}}>
 
       <p ref={messageBox}>
-        {message}
+        {props.message}
       </p>
       </div>
-      { showBtn &&
+      {
+        showBtn &&
         <div className='text-right'>
           <span onClick={() => setSeeMore(!seeMore)} className='text-gray-400 text-sm cursor-pointer'>
             { seeMore ? 'Ocultar': 'Ver más' }

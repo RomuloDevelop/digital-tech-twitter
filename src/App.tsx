@@ -1,7 +1,10 @@
+import { useState } from "react";
 import {
   Routes,
   Route,
+  useLocation,
 } from "react-router-dom";
+import TransitionGroup from "./components/TransitionGroup";
 import AuthGuard from "./guards/AuthGuard";
 import Home from './pages/Home'
 import Login from "./pages/Login";
@@ -11,12 +14,16 @@ import Register from "./pages/Register";
 function App() {
   return (
     <AuthGuard>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="profile" element={<Profile />} />
-      </Routes>
+      <TransitionGroup>
+        {(actualPath) => (
+          <Routes location={actualPath}>
+            <Route path="/" element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="profile" element={<Profile />} />
+          </Routes>
+        )}
+      </TransitionGroup>
     </AuthGuard>
   );
 }
