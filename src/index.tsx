@@ -7,6 +7,12 @@ import { store, persistor } from './store'
 import './assets/sass/index.scss';
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime'
+require('dayjs/locale/es-mx')
+
+dayjs.extend(relativeTime)
+dayjs.locale('es-mx')
 
 ReactDOM.render(
   <React.StrictMode>

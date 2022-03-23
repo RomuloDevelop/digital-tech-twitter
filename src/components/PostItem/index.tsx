@@ -1,5 +1,5 @@
 import { HeartIcon } from '@heroicons/react/solid'
-import moment from 'moment'
+import dayjs from 'dayjs'
 import { useEffect, useRef, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { store } from '../../store'
@@ -15,7 +15,8 @@ type DescriptionProps = {message: string}
 
 const PostItem = (props: PostUser) => {
   const actualUser = useSelector(selectUser) as User
-  const time = moment(props.create_at).from(new Date())
+  let time = dayjs(props.create_at).fromNow()
+  time = time[0].toUpperCase() + time.slice(1)
   const hasLike = props.likes.some(user => user.id === actualUser?.id)
 
   const handlelike = () => {
@@ -64,7 +65,7 @@ const PostItem = (props: PostUser) => {
         props.image && <PostDescription message={props.message} />
       }
       <div className='card__time px-2 pb-2 flex justify-between items-end flex-wrap'>
-        <span className='text-slate-500 text-xs'>Hace {time}</span>
+        <span className='text-slate-500 text-xs'>{time}</span>
         {props.location && <span className='text-slate-500' style={{fontSize: '0.8rem'}}>Desde {props.location}</span>}
       </div>
     </></Card>

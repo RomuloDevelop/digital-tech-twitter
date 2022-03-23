@@ -1,8 +1,11 @@
 import { store } from "../store";
+import CustomError from "./customError";
 
 const generateJson = () => {
   const data = store.getState()
-  if (!data) return
+
+  if (!data) throw new CustomError('No hay data para exportar', {isHandled: true})
+
   const text = JSON.stringify(data)
 
   // Create a tag for download
