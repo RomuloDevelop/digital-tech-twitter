@@ -1,0 +1,18 @@
+.main-header {
+  z-index: 99;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  &__search {
+    gap: clamp(0.5rem, 5vw, 3rem)
+  }
+  &__menu-btn {
+    $size: 50px;
+    width: $size;
+    height: $size;
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

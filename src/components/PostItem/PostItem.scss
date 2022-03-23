@@ -1,0 +1,31 @@
+.card {
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-height: 350px;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+  &__header {
+    height: 70px;
+  }
+  &__like-icon {
+    $size: 1rem;
+    width: $size;
+    height: $size;
+    cursor: pointer;
+  }
+  &__likes {
+    height: 2rem;
+  }
+  &__description {
+    p {
+      white-space: wrap;
+      word-break: break-word;
+    }
+  }
+}
