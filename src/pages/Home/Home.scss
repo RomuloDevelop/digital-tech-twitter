@@ -1,0 +1,21 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  & > div:nth-child(2) {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .home {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    &> div:nth-child(1) {
+      grid-column: 1/4
+    }
+    &> div:nth-child(2) {
+      display: flex;
+      grid-column: 4/6
+    }
+  }
+}

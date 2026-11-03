@@ -1,0 +1,53 @@
+.data-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  
+  .card {
+    padding: 2rem;
+  }
+  
+  .data-title {
+    margin-top: -1rem;
+    font-size: 1.5rem;
+    display: flex;
+    margin-bottom: 1rem;
+    justify-content: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+  }
+
+  .data-wrapper {
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -5rem;
+    width: 100%;
+  }
+
+  .card, & .header-wrapper {
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .data-redirect p a {
+    @apply text-purple-600
+  }
+}
+
+@media (min-width: 795px) {
+  .data-container {
+    .data-wrapper {
+      padding: 0;
+    }
+    .card, & .header-wrapper {
+      width: 50vw;
+    }
+  }
+}
